@@ -28,6 +28,6 @@ class YaUploader:
 
 if __name__ == '__main__':
     full_path = os.path.join('test for task 2.txt')
-    token = 'AQAAAAAkhPtsAADLW-bz9myYZkIklGm8xZKcWx0'
+    token = ''
     uploader = YaUploader(token)
     result = uploader.upload(file_path='test for task 2')
