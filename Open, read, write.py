@@ -4,9 +4,6 @@ from pprint import pprint
 FILE_NAME = "recipes.txt"
 BASE_PATH = os.getcwd()
 full_path = os.path.join(BASE_PATH, FILE_NAME)
-FILE_LIST = '1.txt'
-CATALOG_LIST = 'open, read, write task3'
-full_path_list = os.path.join(BASE_PATH, CATALOG_LIST, FILE_LIST)
 
 
 def catalog_dish_reader(file):
