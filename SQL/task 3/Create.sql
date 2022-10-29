@@ -1,0 +1,59 @@
+CREATE TABLE IF NOT EXISTS genre (
+	genre_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	name VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS musician (
+	musician_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	name VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS music_genre (
+	music_genre_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	genre_id INT, 
+	musician_id INT, 
+	FOREIGN KEY (genre_id)  REFERENCES genre (genre_id) ON DELETE SET NULL,
+	FOREIGN KEY (musician_id) REFERENCES musician (musician_id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS album (
+	album_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	year_of_release DATE
+);
+
+CREATE TABLE IF NOT EXISTS musician_album(
+    musician_album_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	musician_id INT, 
+	album_id INT, 
+	FOREIGN KEY (musician_id) REFERENCES musician (musician_id) ON DELETE SET NULL,
+	FOREIGN KEY (album_id) REFERENCES album (album_id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS track(
+	track_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	time INT NOT NULL CHECK(time > 90),
+	album_id INT, 
+	FOREIGN KEY (album_id) REFERENCES album (album_id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS collection (
+	collection_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	year_of_release DATE
+);
+
+CREATE TABLE IF NOT EXISTS track_collection (
+	track_collection_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	track_id INT, 
+	collection_id INT, 
+	FOREIGN KEY (track_id) REFERENCES track (track_id) ON DELETE SET NULL,
+	FOREIGN KEY (collection_id) REFERENCES collection (collection_id) ON DELETE SET NULL
+);
+
+
+
+
+
+
