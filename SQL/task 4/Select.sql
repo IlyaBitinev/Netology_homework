@@ -24,7 +24,7 @@ SELECT album.name, ROUND(AVG(time), 2)
 	
 -- все исполнители, которые не выпустили альбомы в 2020 году
 
-SELECT musician.name
+SELECT DISTINCT musician.name
   FROM musician 
   JOIN musician_album USING(musician_id)
   JOIN album USING(album_id)
@@ -32,11 +32,11 @@ SELECT musician.name
 							  FROM musician_album
 							 INNER JOIN album USING(album_id)
 							 WHERE TO_CHAR(album.year_of_release, 'YYYY') LIKE '%2020%')
- GROUP BY musician.name;
+;
  
 -- названия сборников, в которых присутствует конкретный исполнитель
 
-SELECT musician.name, collection.name 
+SELECT DISTINCT musician.name, collection.name 
   FROM collection
   JOIN track_collection USING(collection_id)
   JOIN track USING(track_id)
@@ -44,7 +44,7 @@ SELECT musician.name, collection.name
   JOIN musician_album USING(album_id)
   JOIN musician USING(musician_id)
 WHERE musician.name LIKE 'ATL'
-GROUP BY collection.name, musician.name;
+;
 
 -- название альбомов, в которых присутствуют исполнители более 1 жанра
 
@@ -63,7 +63,7 @@ SELECT track.name
   FROM track 
   JOIN track_collection USING(track_id)
  WHERE track_collection.collection_id is NULL 
- GROUP BY track.name;
+;
  
 -- исполнитель, написавшего самый короткий по продолжительности трек 
 
@@ -74,7 +74,7 @@ SELECT musician.name, track.time
  INNER JOIN track USING(album_id)
  WHERE track.time = (SELECT MIN(track.time)
 				       FROM track)
- GROUP BY musician.name, track.time;
+;
 
 -- название альбомов, содержащих наименьшее количество треков
 
