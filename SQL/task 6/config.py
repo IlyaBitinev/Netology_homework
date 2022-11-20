@@ -1,4 +1,5 @@
+name_db = 'book_shop'
 user = 'postgres'
-password = ''
-host = ''
-port =
+password = 'Cjyz2708Ban'
+host = 'localhost'
+port = 5432
