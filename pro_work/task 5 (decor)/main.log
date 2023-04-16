@@ -1,0 +1,20 @@
+Function: hello_world
+2023-04-16 18:46:40.205546
+Arguments: (){}
+Result: Hello World
+Function: summator
+2023-04-16 18:46:40.205546
+Arguments: (2, 2){}
+Result: 4
+Function: div
+2023-04-16 18:46:40.205546
+Arguments: (6, 2){}
+Result: 3.0
+Function: summator
+2023-04-16 18:46:40.205546
+Arguments: (4.3,){'b': 2.2}
+Result: 6.5
+Function: summator
+2023-04-16 18:46:40.205546
+Arguments: (){'a': 0, 'b': 0}
+Result: 0
